@@ -8,8 +8,16 @@ async def send_message(message, user_message,is_private):
     except Exception as e:
         print(e)
 def run_discord_bot():
-    print(discord.Intents.message_content in discord.Intents.default())
-    TOKEN = 'MTE1MjY4NTQ2NDIwNjE4NDQ0OA.Gs1Qkf.GaNOFhCmQvUh8Cf4lyYLRXt0DFplOy0MtkHiRc'
+    # open text file in read mode
+    text_file = open("token.txt", "r")
+
+    # read whole file to a string
+    data = text_file.read()
+
+    # close file
+    text_file.close()
+
+    TOKEN = data
     intents = discord.Intents.default()
     intents.message_content = True
     client = discord.Client(intents=intents)
