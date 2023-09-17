@@ -12,18 +12,20 @@ def GetPokemonFact(pokemon):
     return f'Denne pokemon vejer {vægt} kg, det svarer til {vægt/gennemsnitrunenumse} gange runes numse'
 
 def handle_response(message) -> str:
-    text = message.content
-    if text == 'Hvad har Rune?':
+    text = str(message.content).lower()
+    if text == 'hvad har rune?':
         return 'En kæmpe stor ladvogn'
-    if text == 'Test':
+    if text == 'test':
         return 'Trussen'
-    if text == "Hunde fact":
+    if text == "hunde fact":
         return GetRandomDogFact()
-    if text == "Image":
+    if text == "image":
         return
-    if str(text).startswith("Pokemon"):
+    if str(text).startswith("pokemon"):
         pokemon = str(text).split()[1]
         return GetPokemonFact(pokemon)
-    return "I'm not able to understand that request yet. Try '?' for help"
+    if text == 'help':
+        'The following commands are available:'
+    return "I'm not able to understand that request yet. Try 'help' for help"
 
 
